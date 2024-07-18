@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Events</title>
+</head>
+<body>
+    <h1>Upcoming Events:</h1>
+    <ul>
+        {% for event in upcoming %}
+            <li>
+                <strong>{{ event.name }}</strong> - {{ event.date }} - {{ event.location }}
+            </li>
+        {% empty %}
+            <li>No upcoming events.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
