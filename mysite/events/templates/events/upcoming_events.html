@@ -6,15 +6,22 @@
 </head>
 <body>
     <h1>Upcoming Events:</h1>
-    <ul>
+    {% if upcoming %}
+        <ul>
         {% for event in upcoming %}
-            <li>
-                <strong>{{ event.name }}</strong> - {{ event.date }} - {{ event.location }}
-            </li>
-        {% empty %}
-            <li>No upcoming events.</li>
+            {% if event.date > now %}
+                <h4><li><a href="{% url 'events:detail' event.id %}">
+                    <strong style="color: black" title="During">{{ event.name }}</strong>
+                </a></li></h4>
+            {% else %}
+                <h4><li><a href="{% url 'events:detail' event.id %}">
+                    <strong style="color: gray" title="Expired">{{ event.name }}</strong>
+                </a></li></h4>
+            {% endif %}
         {% endfor %}
-    </ul>
-
+        </ul>
+    {% else %}
+        <p>The event has not been registered.</p>
+    {% endif %}
 </body>
 </html>
