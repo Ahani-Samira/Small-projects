@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>Trips:</h1>
+    <a href="{% url 'bookings:create_trip' %}" style="background-color: green; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        New
+    </a>
     {% for trip in trips %}
         <blockquote>
             <h2><li>{{ trip.destination }}</li></h2>
