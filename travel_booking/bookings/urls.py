@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import create_trip_view
+from .views import create_trip_view, list_trips_view
 
 app_name = 'bookings'
 urlpatterns = [
     path("trips/new/", create_trip_view, name="create_trip"),
+    path("trips/", list_trips_view, name="list_trips"),
 ]
