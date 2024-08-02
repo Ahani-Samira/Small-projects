@@ -16,6 +16,9 @@
                 <h4>Departure Date: {{ trip.departure_date }}</h4>
                 <h4>Return Date: {{ trip.return_date }}</h4>
                 <h4>Number Of Travelers: {{ trip.number_of_travelers }}</h4>
+                <a href="{% url 'bookings:update_trip' trip.pk %}" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                    Edit
+                </a>
             </blockquote>
         </blockquote>
     {% endfor %}
