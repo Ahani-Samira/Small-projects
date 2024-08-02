@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import TripForm
-
+from .models import Trip
 
 def create_trip_view(request):
     if request.method == "POST":
@@ -11,3 +11,8 @@ def create_trip_view(request):
         form = TripForm()
     return render(request,"bookings/create_trip.html", {"form": form})
 
+
+def list_trips_view(request):
+    form = TripForm(request.GET)
+    trips = Trip.objects.all()
+    return render(request, "bookings/list_trips.html", {"form":form, "trips":trips})
