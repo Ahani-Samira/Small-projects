@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import TripForm
 from .models import Trip
 
@@ -27,3 +27,11 @@ def update_trip_view(request, pk):
     else:
         form = TripForm(instance=trip)
     return render(request, "bookings/update_trip.html", {"form":form})
+
+
+def delete_trip_view(request, pk):
+    trip = get_object_or_404(Trip, pk=pk)
+    if request.method == 'POST':
+        trip.delete()
+        return redirect("bookings:list_trips")
+    return render(request, "bookings/confirm_delete.html", {"trip": trip})
