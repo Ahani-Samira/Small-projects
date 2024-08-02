@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Trips</title>
+</head>
+<body>
+    <h1>Trips:</h1>
+    {% for trip in trips %}
+        <blockquote>
+            <h2><li>{{ trip.destination }}</li></h2>
+            <blockquote>
+                <h4>Departure Date: {{ trip.departure_date }}</h4>
+                <h4>Return Date: {{ trip.return_date }}</h4>
+                <h4>Number Of Travelers: {{ trip.number_of_travelers }}</h4>
+            </blockquote>
+        </blockquote>
+    {% endfor %}
+</body>
+</html>
