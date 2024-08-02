@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm delete</title>
+</head>
+<body>
+    <h2>Are you sure you want to delete this trip?</h2>
+    <h2><li>{{ trip.destination }}</li></h2>
+    <blockquote>
+        <h4>Departure Date: {{ trip.departure_date }}</h4>
+        <h4>Return Date: {{ trip.return_date }}</h4>
+        <h4>Number Of Travelers: {{ trip.number_of_travelers }}</h4>
+    </blockquote>
+    <form method="post">{% csrf_token %}
+        <button type="submit" style="background-color: red; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Delete
+        </button>
+        <a href="{% url 'bookings:list_trips' %}" style="background-color: blue; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Cancel
+        </a>
+    </form>
+</body>
+</html>
