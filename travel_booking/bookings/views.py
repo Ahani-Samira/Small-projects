@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import TripForm
 from .models import Trip
+from rest_framework import viewsets
+from .serializers import TripSerializer
 
 def create_trip_view(request):
     if request.method == "POST":
@@ -35,3 +37,8 @@ def delete_trip_view(request, pk):
         trip.delete()
         return redirect("bookings:list_trips")
     return render(request, "bookings/confirm_delete.html", {"trip": trip})
+
+
+class TripViewSet(viewsets.ModelViewSet):
+    queryset = Trip.objects.all()
+    serializer_class = TripSerializer
