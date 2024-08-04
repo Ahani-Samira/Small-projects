@@ -7,6 +7,6 @@ class TripForm(forms.ModelForm):
         model = Trip
         fields = ['destination', 'departure_date', 'return_date', 'number_of_travelers']
         widgets = {
-            'departure_date' : forms.DateInput(attrs={'class' : 'datepicker'}),
-            'return_date' : forms.DateInput(attrs={'class' : 'datepicker'}),
+            'departure_date': forms.DateInput(attrs={'class': 'datepicker'}),
+            'return_date': forms.DateInput(attrs={'class': 'datepicker'}),
         }
