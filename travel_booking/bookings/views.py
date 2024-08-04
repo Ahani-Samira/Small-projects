@@ -4,11 +4,13 @@ from .models import Trip
 from rest_framework import viewsets
 from .serializers import TripSerializer
 
+
 def create_trip_view(request):
     if request.method == "POST":
         form = TripForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("bookings:list_trips")
     else:
         form = TripForm()
     return render(request,"bookings/create_trip.html", {"form": form})
@@ -26,6 +28,7 @@ def update_trip_view(request, pk):
         form = TripForm(request.POST, instance=trip)
         if form.is_valid():
             form.save()
+            return redirect("bookings:list_trips")
     else:
         form = TripForm(instance=trip)
     return render(request, "bookings/update_trip.html", {"form":form})
